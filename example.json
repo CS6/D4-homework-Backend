@@ -1,0 +1,35 @@
+{
+  "age": 21,
+  "name": "LinDaYuan",
+  "gender": "male",
+  "school":   {
+    "代碼": "0050",
+    "學校名稱": "國立臺中科技大學",
+    "公/私立": "公立",
+    "縣市名稱": "[19]臺中市",
+    "地址": "[404]臺中市北區三民路三段129號",
+    "電話": "(04)22195678",
+    "網址": "http://www.nutc.edu.tw/bin/home.php",
+    "體系別": "[2]技職"
+  },
+  "dept": { "學系": "資訊工程" },
+  "talent": { "ID": "666", "Hobby": "找到問題", "Category": "問題解決" },
+  "hobby": [
+    { "ID": "346", "Hobby": "在山上寫Code", "Category": "戶外活動" },
+    { "ID": "341", "Hobby": "研究新技術", "Category": "極端" },
+    { "ID": "220", "Hobby": "聽ＪＰＯＰ", "Category": "音樂" },
+    { "ID": "127", "Hobby": "爬山", "Category": "戶外活動" },
+    { "ID": "203", "Hobby": "製作產品原型", "Category": "工藝品" },
+    { "ID": "90", "Hobby": "UI/UX", "Category": "工藝品" },
+    { "ID": "81", "Hobby": "收集模型", "Category": "收集中" }
+  ],
+  "club": "COSCUP",
+  "lovedCountry": "TAIWAN",
+  "trouble": "找工作",
+  "wantToTry": "尋找挑戰",
+  "exchange": [
+    { "ID": "329", "Hobby": "城市探索", "Category": "戶外活動" },
+    { "ID": "341", "Hobby": "研究新技術", "Category": "極端" }
+  ],
+  "avatar": "https://avatars.githubusercontent.com/u/16307922"
+}
