@@ -17,7 +17,7 @@ router.get('/random',rateLimiter, async (req: Request, res: Response) => {
   const count = await UserModel.estimatedDocumentCount();
   if (count) {
     const user = await UserModel.find({}).limit(1).skip(_.random(1, count, false));
-    return res.status(HttpStatusCodes.OK).send(user);
+    return res.status(HttpStatusCodes.OK).json(user);
   }
   return res.status(HttpStatusCodes.ACCEPTED).send('Failed to calculate the number of documents');
 });

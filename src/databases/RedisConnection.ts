@@ -1,5 +1,4 @@
 import redis from 'redis';
-// import logger from '@shared/logger';
 import logger from '../shared/logger';
 
 const options = {

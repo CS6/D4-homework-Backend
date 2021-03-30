@@ -45,9 +45,7 @@ function errorHandler(err: Error, req: Request, res: Response, next: any) {
   if (res.headersSent) {
     return next(err);
   }
-  // console.log("err",err)
   logger.err(err, false);
-  // res.status(500).json({ error: err.message });
   return res.status(500).send({ error: 'Something failed!' });
 }
 

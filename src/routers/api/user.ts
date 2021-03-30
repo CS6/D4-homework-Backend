@@ -82,19 +82,16 @@ router.get('/addOneUser', async (req: Request, res: Response) => {
 });
 
 router.post('/setuser', async (req: Request, res: Response) => {
-  // console.log(req.body);
   const user = await UserController.CreateUser(req.body);
   return res.status(HttpStatusCodes.OK).send({ user });
 });
 
 router.post('/setmore', async (req: Request, res: Response) => {
-  // console.log(req.body);
   const user = await UserModel.create(req.body);
   return res.status(HttpStatusCodes.OK).send({ user });
 });
 
 router.post('/set', async (req: Request, res: Response) => {
-  // console.log(req.body);
   const user = await UserModel.create(req.body);
   return res.status(HttpStatusCodes.OK).send({ user });
 });
