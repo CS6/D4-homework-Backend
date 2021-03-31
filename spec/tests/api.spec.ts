@@ -6,7 +6,6 @@ import * as chai from 'chai';
 import chaiHttp = require('chai-http');
 import 'mocha';
 import { Server } from 'node:http';
-import logger from '../../_src/shared/logger';
 
 chai.use(chaiHttp);
 chai.config.includeStack = true;
