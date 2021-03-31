@@ -5,10 +5,10 @@ import { connectToRedis } from '../databases/RedisConnection';
 export default (req: Request, res: Response, next: NextFunction) => {
   const redisClient = connectToRedis();
   const ipAddress = getClientIp(req);
-
   redisClient
     .multi()
-    .set([ipAddress, 0, 'EX', 3600, 'NX']) // NX -> 只有 key 不存在才會設立
+    // .set([ipAddress, 0, 'EX', 3600, 'NX'])
+    .set(ipAddress, '0', 'EX', 3600, 'NX') // NX -> 只有 key 不存在才會設立
     .incr(ipAddress)
     .ttl(ipAddress)
     .exec((err: any, replies: any) => {
