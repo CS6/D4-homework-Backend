@@ -8,7 +8,7 @@
     "lint": "eslint . --ext .ts",
     "start": "node dist/src/index.js",
     "dev": "nodemon",
-    "test": "./node_modules/mocha/bin/mocha --require ts-node/register spec/tests/*.spec.ts",
+    "test": "./node_modules/mocha/bin/mocha --require ts-node/register spec/tests/tests.spec.ts",
     "test:nodemon": "nodemon --config ./spec/nodemon.json",
     "test-dev": "nodemon --watch . --ext ts --exec \"mocha -r ts-node/register spec/**/*.spec.ts\"",
     "test:mocha": "mocha --require ts-node/register spec/**/*.spec.ts",
