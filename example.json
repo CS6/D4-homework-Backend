@@ -16,7 +16,7 @@
   "talent": { "ID": "666", "Hobby": "找到問題", "Category": "問題解決" },
   "hobby": [
     { "ID": "346", "Hobby": "在山上寫Code", "Category": "戶外活動" },
-    { "ID": "341", "Hobby": "研究新技術", "Category": "極端" },
+    { "ID": "341", "Hobby": "研究新技術", "Category": "刺激" },
     { "ID": "220", "Hobby": "聽ＪＰＯＰ", "Category": "音樂" },
     { "ID": "127", "Hobby": "爬山", "Category": "戶外活動" },
     { "ID": "203", "Hobby": "製作產品原型", "Category": "工藝品" },
@@ -29,7 +29,7 @@
   "wantToTry": "尋找挑戰",
   "exchange": [
     { "ID": "329", "Hobby": "城市探索", "Category": "戶外活動" },
-    { "ID": "341", "Hobby": "研究新技術", "Category": "極端" }
+    { "ID": "341", "Hobby": "研究新技術", "Category": "刺激" }
   ],
   "avatar": "https://avatars.githubusercontent.com/u/16307922"
 }
