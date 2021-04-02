@@ -4,6 +4,7 @@ import { Request, Response, NextFunction } from 'express';
 import { getClientIp } from '../utils/getIpAddress';
 import { connectToRedis } from '../databases/RedisConnection';
 import logger from '../shared/logger';
+// import slidingWindow from './plugin/slidingWindow';
 
 export default async (req: Request, res: Response, next: NextFunction) => {
   const { ip } = req;
@@ -15,7 +16,6 @@ export default async (req: Request, res: Response, next: NextFunction) => {
   const accessToken = '1231412414';
   const luaScriptTextFilePath = path.resolve('./src/middlewares/plugin/slidingWindow.lua');
   const luaScriptText = (await fs.promises.readFile(luaScriptTextFilePath)).toString();
-
   try {
     return redisClient
       .multi()
