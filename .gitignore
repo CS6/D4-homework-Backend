@@ -5,3 +5,6 @@ _src
 log
 
 dist
+
+env/production.env
+env/development.env
