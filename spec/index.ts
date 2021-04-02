@@ -1,10 +1,10 @@
 import * as faker from 'faker/locale/zh_TW';
 import * as _ from "lodash";
 
-import * as deptObject from "./data/dept.json";
-import * as schoolObject from "./data/school.json";
-import * as hobbyObject from "./data/hobby.json";
-import * as moodObject from "./data/mood.json";
+import deptObject from "./data/dept.json";
+import schoolObject from "./data/school.json";
+import hobbyObject from "./data/hobby.json";
+import moodObject from "./data/mood.json";
 
 export const add = (num1: number, num2: number): number => {
   return num1 + num2
@@ -13,7 +13,7 @@ export const add = (num1: number, num2: number): number => {
 const hobbyGenerator = (num: number) => {
   let hobbys = _.range(1, _.random(2, num, false));
   let hobbyList = hobbys.map(hobby => {
-    return hobbyObject[_.random(hobbyObject.length, false)]
+    return hobbyObject[_.random(10,hobbyObject.length, false)]
   })
   return hobbyList
 }
@@ -28,25 +28,27 @@ export const fakeDcardUser = () => {
     age: _.random(18, 30, false),
     name: name,
     gender: gender,
-    school: schoolObject[_.random(schoolObject.length, false)],
-    dept: deptObject[_.random(deptObject.length, false)],
-    talent: hobbyObject[_.random(hobbyObject.length, false)],
+    school: schoolObject[_.random(2,schoolObject.length, false)-1],
+    dept: deptObject[_.random(deptObject.length, false)-1],
+    talent: hobbyObject[_.random(2,hobbyObject.length, false)-1],
     hobby: hobbyGenerator(10),
-    club: hobbyObject[_.random(hobbyObject.length, false)].Category + "社",
+    club: hobbyObject[_.random(2,hobbyObject.length, false)-1].Hobby + "社",
     lovedCountry: faker.address.country(),
-    trouble: moodObject[_.random(moodObject.length, false)].mood,
-    wantToTry: hobbyGenerator(2)[0].Hobby,
-    exchange: hobbyGenerator(3),
+    trouble: moodObject[_.random(2,moodObject.length, false)-1].mood,
+    wantToTry: hobbyObject[_.random(2,hobbyObject.length, false)-1].Hobby,
+    exchange: hobbyGenerator(5),
     avatar: `https://avatars1.githubusercontent.com/u/${uid.replace(/^(\d{8}).*$/, '$1')}`
   }
 
   return Dcard
 }
+const sleep = () => new Promise((res, rej) => setTimeout(res, 345));
 
 export const fakeDcardALLUser = () => {
   let Users = _.range(1, 50);
-  let ALLUser = Users.map(User => {
-    return fakeDcardUser();
+  let ALLUser =  Users.map(User => {
+    return  fakeDcardUser();
   })
   return ALLUser;
 }
+
