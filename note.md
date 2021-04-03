@@ -46,3 +46,7 @@ https://www.chaijs.com/api/bdd/
 
 如何在mongodb中找到隨機記錄
 db.getCollection('users').find().limit( 1 ).skip( _rand() * db.getCollection('users').count() )
+
+
+
+https://gist.github.com/haproxytechblog/608d580de6144a771c7b46d6ee17f526
