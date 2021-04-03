@@ -21,11 +21,11 @@ export interface User extends Document {
   trouble: string;
   wantToTry: string;
   exchange: [Hobby];
-  date: Date;
+  date: string;
   avatar: string;
 }
 
-const schema: Schema = new Schema({
+export const schema: Schema = new Schema({
   age: {
     type: Number,
     required: true,
@@ -88,5 +88,8 @@ const schema: Schema = new Schema({
 });
 
 const UserModel: Model<User> = model('User', schema);
+export interface IUserModel extends User, Document {
+  //custom methods for your model would be defined here
+}
 
 export default UserModel;
