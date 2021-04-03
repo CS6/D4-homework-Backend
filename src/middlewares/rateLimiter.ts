@@ -15,6 +15,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
   const now = new Date().getTime();
   const accessToken = '1231412414';
   const luaScriptTextFilePath = path.resolve('./src/middlewares/plugin/slidingWindow.lua');
+  // const luaScriptTextFilePath = path.resolve('./src/middlewares/plugin/resetTime.lua');
   const luaScriptText = (await fs.promises.readFile(luaScriptTextFilePath)).toString();
   try {
     return redisClient
@@ -22,17 +23,20 @@ export default async (req: Request, res: Response, next: NextFunction) => {
       .eval(luaScriptText, 1, ipAddress, now, slidingWindowSec, maxCallsPerHour)
       .exec((err: any, result: any[]) => {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const [[remainingCount, resetTime, difference]] = result;
+        const [[remainingCount, resetTime, difference,firstOne,lastOne ]] = result;
+        res.setHeader('X-RateLimit-Limit', 1000);
+        res.setHeader('X-RateLimit-Remaining', remainingCount);
+        res.setHeader('X-RateLimit-Reset', lastOne[0]-slidingWindowSec);
+        res.setHeader('firstOne', firstOne[0]); 
+        res.setHeader('lastOne', lastOne[0]);
         if (remainingCount < 1) {
           return res.status(429).json({
             status:` 429 Too Many Requests`,
-            body: `${result}:${ipAddress} Not allowed${accessToken}`
+            body: `${result}:${ipAddress} Not allowed${accessToken}`,
+            detail: `Wait ${new Date(lastOne[0]-slidingWindowSec).getSeconds()} seconds, then slow down!`
           });
         }
         logger.info(`[*] <<< ${ip} connecting, remaining ${result}`);
-        res.setHeader('X-RateLimit-Limit', 1000);
-        res.setHeader('X-RateLimit-Remaining', remainingCount);
-        res.setHeader('X-RateLimit-Reset', Math.max(0, resetTime));
         return next();
       });
   } catch (error) {

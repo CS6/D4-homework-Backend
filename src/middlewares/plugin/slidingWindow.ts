@@ -18,3 +18,6 @@ local ResetTime = redis.call('TTL', KEYS[1])
 return {limit - amount,ResetTime,now-clearBefore}`
 // return limit - amount`
 // return {token,now,window,limit}`
+
+
+//https://www.codementor.io/@arpitbhayani/system-design-sliding-window-based-rate-limiter-157x7sburi
