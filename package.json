@@ -18,6 +18,7 @@
     "test:mocha": "mocha --require ts-node/register spec/**/*.spec.ts",
     "test-mocha": "mocha -r ts-node/register spec/**/*.spec.ts",
     "faker": "NODE_ENV=development  ./node_modules/mocha/bin/mocha --exit -t 3000 --require ts-node/register spec/faker.ts",
+    "faker:docker": "NODE_ENV=production ./node_modules/mocha/bin/mocha --exit -t 3000 --require ts-node/register  dist/spec/faker.js",
     "make-env": "cp ./env/.example-loaclhost.env  ./env/development.env && cp ./env/.example-docker.env ./env/production.env"
   },
   "nodemonConfig": {
