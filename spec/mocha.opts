@@ -1,5 +1,5 @@
---timeout 500000
+--timeout 50000
 --require should
 --reporter spec
 --ui bdd
---recursive ./app.js
+--recursive ./index.js
