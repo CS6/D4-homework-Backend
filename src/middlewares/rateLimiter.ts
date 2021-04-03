@@ -24,7 +24,10 @@ export default async (req: Request, res: Response, next: NextFunction) => {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const [[remainingCount, resetTime, difference]] = result;
         if (remainingCount < 1) {
-          return res.status(429).send(`${result}:${ipAddress} Not allowed${accessToken}`);
+          return res.status(429).json({
+            status:` 429 Too Many Requests`,
+            body: `${result}:${ipAddress} Not allowed${accessToken}`
+          });
         }
         logger.info(`[*] <<< ${ip} connecting, remaining ${result}`);
         res.setHeader('X-RateLimit-Limit', 1000);
@@ -33,6 +36,8 @@ export default async (req: Request, res: Response, next: NextFunction) => {
         return next();
       });
   } catch (error) {
-    return res.status(500).send('我拒絕你的連線');
+    return res.status(500).json({
+      'msg': '我拒絕你的連線',
+    });
   }
 };
